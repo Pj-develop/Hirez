@@ -1,10 +1,17 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import AppNavbar from "./Components/Navbar";
+import { BrowserRouter as Router } from "react-router-dom";
+import C1 from "./Components/C1";
 
 function App() {
   return (
-    <div className="App">
-      <h1>The React App is working</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <AppNavbar />
+        <C1 />
+      </div>
+    </Router>
   );
 }
 
