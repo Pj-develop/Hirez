@@ -5,8 +5,9 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const UserRoute = require("./Routes/UserRoutes");
-const VacanciesRoutes = require("./Routes/VacanciesRoutes");
+const userRoute = require("./Routes/UserRoutes");
+const vacanciesRoutes = require("./Routes/VacanciesRoutes");
+const companyRoute = require("./Routes/CompanyRoutes");
 
 //#endregion
 
@@ -53,16 +54,16 @@ mongoose
 
 //#region routes
 
-// app.use("/api/workouts", workoutsRoutes);
-app.use("/api/user", UserRoute);
-app.use("/api/vacancy", VacanciesRoutes);
+app.use("/api/user", userRoute);
+app.use("/api/vacancy", vacanciesRoutes);
+app.use("/api/company", companyRoute);
 
 //#endregion
 
-// //#region listen
+//#region listen
 
 app.listen(PORT, () => {
   console.log("Backend App working on " + PORT);
 });
 
-// //#endregion
+//#endregion
