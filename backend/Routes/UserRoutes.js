@@ -1,17 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-// const { loginUser, signUp } = require("../controllers/userController");
+const {
+  loginUser,
+  signUp,
+} = require("../modules/controller/UserLoginRegister");
 
 //#region Login
 
-// router.post("/login", loginUser);
+router.post("/login", loginUser);
 
 //#endregion
 
 //#region signup
 
-// router.post("/signup", signUp);
+router.post("/signup", signUp);
 
 //#endregion
 

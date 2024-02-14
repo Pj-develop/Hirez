@@ -33,27 +33,27 @@ app.use((req, res, next) => {
 
 //#region Connection Mongoose
 
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => {
-//     //#region listen
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    //#region listen
 
-//     app.listen(4000, () => {
-//       console.log("DB Connected & Backend App working on " + PORT);
-//     });
+    app.listen(4000, () => {
+      console.log("DB Connected & Backend App working on " + PORT);
+    });
 
-//     //#endregion
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+    //#endregion
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 //#endregion
 
 //#region routes
 
 // app.use("/api/workouts", workoutsRoutes);
-// app.use("/api/user", userRoute);
+app.use("/api/user", userRoute);
 
 //#endregion
 
