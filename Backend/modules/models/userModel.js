@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    username: {
+    name: {
       type: String,
-      required: true,
-      unique: true,
+      required: true
+
     },
     email: {
       type: String,
@@ -24,33 +24,34 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    phoneNo: {
+      type: String,
+      required: true,
+      unique: true,
+    }
   },
   { timestamps: true }
 );
 
-//#region signup
+//#region Signup
 
-userSchema.statics.signup = async function (username, email, password) {
-  if (!email || !username || !password) {
-    throw Error("All feilds are mendatory");
+userSchema.statics.signup = async function (name, email, password, phoneNo) {
+  if (!email || !phoneNo || !password) {
+    throw Error("All fields are mandatory");
   }
 
-  // Check if the email or username already exists
+  // Check if the email or phone number already exists
   const existEmail = await this.findOne({ email });
-  const existUsername = await this.findOne({ username });
+  const existPhone = await this.findOne({ phoneNo });
 
-  // If email or username already exists, throw an error
+  // If email or phone number already exists, throw an error
   if (existEmail) {
     throw new Error("Email is already in use");
   }
 
-  if (existUsername) {
-    throw new Error("Username is already taken");
+  if (existPhone) {
+    throw new Error("Phone number is already in use");
   }
-
-  // if (!validator.isStrongPassword(password)) {
-  //   throw Error("Weak Password");
-  // }
 
   // Hash the password
   const salt = await bcrypt.genSalt(10);
@@ -58,9 +59,10 @@ userSchema.statics.signup = async function (username, email, password) {
 
   // Create a new user
   const newUser = await this.create({
-    username,
+    name,
     email,
     password: hashedPassword,
+    phoneNo,
   });
 
   return newUser;
@@ -70,23 +72,12 @@ userSchema.statics.signup = async function (username, email, password) {
 
 //#region Login
 
-userSchema.statics.loginUser = async function (username, email, password) {
-  if (!password || (!email && !username)) {
-    throw Error("At least provide an email or username and password");
+userSchema.statics.loginUser = async function (email, password) {
+  if (!password || (!email)) {
+    throw Error("Email and password are required");
   }
 
-  let field;
-  if (email) {
-    if (!validator.isEmail(email)) {
-      throw Error("Invalid email address");
-    }
-    field = email;
-  }
-  if (username) {
-    field = username;
-  }
-
-  const user = await this.findOne({ $or: [{ email }, { username }] });
+  const user = await this.findOne({ email });
 
   if (!user) {
     throw new Error("No such user exists");
