@@ -8,10 +8,10 @@ const createToken = (_id) => {
 //#region Login
 
 const loginUser = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
   try {
     // Call the login function with appropriate parameters
-    const user = await User.loginUser(username, email, password);
+    const user = await User.loginUser(email, password);
 
     // creating a token
     const token = createToken(user._id);
@@ -28,8 +28,8 @@ const loginUser = async (req, res) => {
 
 const signUp = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    const newUser = await User.signup(username, email, password);
+    const { name, phoneNo, email, password } = req.body;
+    const newUser = await User.signup(name, email, password, phoneNo);
 
     // creating a token
     const token = createToken(newUser._id);

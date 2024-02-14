@@ -8,8 +8,7 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true
-
+      required: true,
     },
     email: {
       type: String,
@@ -28,7 +27,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-    }
+    },
   },
   { timestamps: true }
 );
@@ -73,7 +72,7 @@ userSchema.statics.signup = async function (name, email, password, phoneNo) {
 //#region Login
 
 userSchema.statics.loginUser = async function (email, password) {
-  if (!password || (!email)) {
+  if (!password || !email) {
     throw Error("Email and password are required");
   }
 
