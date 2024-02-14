@@ -75,7 +75,7 @@ companySchema.statics.signup = async function (companyName, email, password, yea
 
 //#region Login
 
-companySchema.statics.loginCompany = async function (email, password) {
+companySchema.statics.login = async function (email, password) {
   if (!email || !password) {
     throw Error("Email and password are required");
   }
