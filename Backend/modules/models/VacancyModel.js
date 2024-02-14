@@ -26,17 +26,15 @@ const VacancySchema = new Schema(
       type: String,
       required: [true, "Location is required"],
     },
-    salary: {
-      type: Number,
-      required: [true, "Salary is required"],
-    },
-    deadline: {
-      type: Date,
-      required: [true, "Deadline is required"],
-    },
-    isRemote: {
-      type: Boolean,
-      default: false,
+    expectedSalary: {
+      minSalary: {
+        type: Number,
+        required: [true, "Minimum salary is required"],
+      },
+      maxSalary: {
+        type: Number,
+        required: [true, "Maximum salary is required"],
+      },
     },
     benefits: {
       type: [String],
@@ -50,6 +48,15 @@ const VacancySchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Company",
       required: [true, "Company is required"],
+    },
+    status: {
+      type: String,
+      enum: ["open", "closed"],
+      default: "open",
+    },
+    numberOfVacanciesAvailable: {
+      type: Number,
+      required: [true, "Number of vacancies available is required"],
     },
     // You can add more fields as needed
   },
