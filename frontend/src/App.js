@@ -9,8 +9,7 @@ function App() {
     <Router>
       <div className="App">
         <AppNavbar />
-        {/* <C1 /> */}
-        <Appfooter />
+        <C1 />
       </div>
     </Router>
   );
