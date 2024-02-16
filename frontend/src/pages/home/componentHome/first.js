@@ -1,12 +1,23 @@
 import React from 'react'
-
+import './first.css'
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import Lottie from 'lottie-react';
+import animationData from './hired.json'
 export default function first() {
   return (
-    <div>
+    <div className='Hero'>
         <div className="left">
+            <strong>Unlock your Career <br/>Potential with <br/> Hirez!</strong>
+            <form class="d-flex" role="search">
+        <input type="text" className='search' />
+        <button>s</button>
+      </form>
 
         </div>
-        <div className="right"></div>
+        <div className="right">
+            
+            <Lottie animationData={require('./hired.json')}/>
+        </div>
     </div>
   )
 }
