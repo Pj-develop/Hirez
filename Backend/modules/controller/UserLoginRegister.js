@@ -2,7 +2,7 @@ const User = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
 
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECREAT, { expiresIn: "5d" });
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "5d" });
 };
 
 //#region Login

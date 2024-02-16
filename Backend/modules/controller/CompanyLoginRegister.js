@@ -2,7 +2,7 @@ const Company = require("../models/companyModel");
 const jwt = require("jsonwebtoken");
 
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECREAT, { expiresIn: "5d" });
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "5d" });
 };
 
 //#region Login
@@ -45,6 +45,7 @@ const signUp = async (req, res) => {
     res.json({ email, token, id });
   } catch (error) {
     res.status(400).json({ error: error.message });
+    console.log(error);
   }
 };
 

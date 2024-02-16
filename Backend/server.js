@@ -1,77 +1,34 @@
-//#region require
-
-require("dotenv").config();
-
 const express = require("express");
+const cors = require("cors"); // Import the cors package
+require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const userRoute = require("./Routes/UserRoutes");
 const vacanciesRoutes = require("./Routes/VacanciesRoutes");
 const companyRoute = require("./Routes/CompanyRoutes");
 
-//#endregion
-
 const PORT = process.env.PORT || 4001;
 
-//#region middlewares
-
-app.use(express.json()); // used for requesting body
+app.use(express.json());
+app.use(cors()); // Use cors middleware to enable CORS
 
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
+  console.log(req.path, req.method, req.body);
   next();
 });
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   res.header(
-//     "Access-Control-Allow-Header",
-//     "Origin, X-Requested-With Content-Type, Accept"
-//   );
-//   next();
-// });
-
-//#endregion
-
-//#region Connection Mongoose
-
+// Connection to MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    //#region listen
-
-    app.listen(4000, () => {
+    app.listen(PORT, () => {
       console.log("DB Connected & Backend App working on " + PORT);
     });
-
-    //#endregion
   })
   .catch((error) => {
     console.log(error);
   });
 
-//#endregion
-
-//#region routes
-
 app.use("/api/user", userRoute);
 app.use("/api/vacancy", vacanciesRoutes);
 app.use("/api/company", companyRoute);
-
-//#endregion
-
-//#region listen
-
-app.listen(PORT, () => {
-  console.log("Backend App working on " + PORT);
-});
-
-//#endregion
-
-// //#region listen
-
-// app.listen(4000, () => {
-//   console.log("Backend App working on " + PORT);
-// });
-
-// //#endregion
