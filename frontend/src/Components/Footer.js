@@ -8,6 +8,9 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+//import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
+
 
 export default function App() {
   return (
