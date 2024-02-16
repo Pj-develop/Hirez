@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./fifth.css";
 
-export default function fifth() {
+export default function Fifth() {
   return (
     <div className="fifth">
       <div className="box1">
@@ -16,13 +17,16 @@ export default function fifth() {
           <div className="man-image"></div>
         </div>
 
-        <button className="btn-login">
-          Employer Login <i class="bi bi-box-arrow-in-right"></i>{" "}
-        </button>
+        {/* Link to /company/signup for Employer Login */}
+        <Link to="/company/signup" className="btn-login">
+          Employer Login <i className="bi bi-box-arrow-in-right"></i>{" "}
+        </Link>
 
-        <button className="btn-1">
+        {/* Link to /finds for Find Job */}
+        <Link to="/find" className="btn-1">
           Find Job <i className="bi bi-search"></i>{" "}
-        </button>
+        </Link>
+
         <button className="btn-2">
           Connect With Us <i className="bi bi-arrow-right-circle"></i>{" "}
         </button>

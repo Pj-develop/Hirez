@@ -1,6 +1,5 @@
 import React from "react";
 import "./second.css";
-import Lottie from "lottie-react";
 import Marquee from "../../../Components/Marquee";
 
 export default function second() {
