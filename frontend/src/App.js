@@ -1,10 +1,23 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import AppNavbar from "./Components/Navbar";
+import Appfooter from "./Components/Footer";
+import { BrowserRouter as Router } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import Home from "./pages/home/home";
+
+library.add(fab);
 
 function App() {
   return (
-    <div className="App">
-      <h1>The React App is working</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <AppNavbar />
+        <Home />
+        <Appfooter />
+      </div>
+    </Router>
   );
 }
 
