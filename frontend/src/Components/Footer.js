@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 //import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
+
 export default function App() {
   return (
     <MDBFooter bgColor="light" className="text-center text-lg-start text-muted">
