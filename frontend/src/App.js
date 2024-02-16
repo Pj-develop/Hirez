@@ -4,6 +4,10 @@ import AppNavbar from "./Components/Navbar";
 import Appfooter from "./Components/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/home/home";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+
+library.add(fab);
 
 function App() {
   return (
