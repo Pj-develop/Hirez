@@ -28,13 +28,21 @@ const login = async (req, res) => {
 
 const signUp = async (req, res) => {
   try {
-    const { companyName, email, password, yearOfEstablishment, fieldsOfWork } = req.body;
-    const newCompany = await Company.signup(companyName, email, password, yearOfEstablishment, fieldsOfWork);
+    const { companyName, email, password, yearOfEstablishment, fieldsOfWork } =
+      req.body;
+    const newCompany = await Company.signup(
+      companyName,
+      email,
+      password,
+      yearOfEstablishment,
+      fieldsOfWork
+    );
 
     // creating a token
     const token = createToken(newCompany._id);
+    const id = newCompany._id;
 
-    res.json({ email, token });
+    res.json({ email, token, id });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
