@@ -24,7 +24,7 @@ export default function AppNavbar({ isAuthenticated, email, onLogout }) {
   return (
     <Navbar className="bg-body-tertiary" style={{ padding: "10px" }}>
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <Image
             src={logoImage}
             style={{ maxHeight: "50px", marginRight: "10px" }}
