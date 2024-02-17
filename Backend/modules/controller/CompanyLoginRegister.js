@@ -16,7 +16,7 @@ const login = async (req, res) => {
     // creating a token
     const token = createToken(company._id);
 
-    res.json({ email: company.email, token });
+    res.json({ email: company.email, token, accountType: "company" }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -42,10 +42,9 @@ const signUp = async (req, res) => {
     const token = createToken(newCompany._id);
     const id = newCompany._id;
 
-    res.json({ email, token, id });
+    res.json({ email, token, id, accountType: "company" }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
-    console.log(error);
   }
 };
 
