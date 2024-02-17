@@ -18,6 +18,6 @@ router.delete("/:id", deleteVacancy);
 
 router.get("/:id", getVacancyById);
 
-router.get("/company/:companyId/vacancies", getAllVacanciesForCompany);
+router.get("/company/:companyId", getAllVacanciesForCompany);
 
 export default router;

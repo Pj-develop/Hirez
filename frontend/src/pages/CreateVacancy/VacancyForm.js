@@ -6,12 +6,8 @@ const VacancyForm = () => {
   let companyId = "";
 
   if (data) {
-    const { id } = JSON.parse(data);
-    companyId = id;
-  } else {
-    // Handle the case where there is no logged-in user data
-    // You can set companyId to a default value or handle it as needed
-    // For instance, you could redirect the user to the login page.
+    const { Id } = JSON.parse(data);
+    companyId = Id;
   }
 
   const [formData, setFormData] = useState({
