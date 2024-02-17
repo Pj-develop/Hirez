@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'popins', sans-serif;
+}
+.third{
+    background-image: url(./BgThird.svg);
+    background-color: #009688;
+}
+#Head{
+    padding-top: 4rem;
+    padding-left: 3rem;
+    text-align: left;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #E0F1E0;
+    font-stretch:extra-expanded;
+}
+.p1{
+    padding-top: 2rem;
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+    text-align: left;
+    font-weight: 900;
+    font-size: 1rem;
+    color: #E0F1E0;
+    font-stretch:extra-expanded;
+}
+.features{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding-top: 3rem;
+     /* padding-left: 2px; 
+     margin-left: 0px; */
+    /* padding-right: 3rem;  */
+}
