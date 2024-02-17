@@ -18,6 +18,7 @@
     "jsonwebtoken": "^9.0.2",
     "microsoft-cognitiveservices-speech-sdk": "^1.35.0",
     "mongoose": "^8.1.1",
+    "nodemailer": "^6.9.9",
     "nodemon": "^3.0.3",
     "validator": "^13.11.0"
   }
