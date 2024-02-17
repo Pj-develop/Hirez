@@ -8,7 +8,6 @@ function VacancyDetails() {
 
   useEffect(() => {
     const fetchVacancyDetails = async () => {
-      console.log(vacancyId);
       try {
         const response = await fetch(`/api/vacancy/${vacancyId}`);
         if (!response.ok) {
@@ -26,9 +25,6 @@ function VacancyDetails() {
 
   if (!vacancy) {
     return <div className="loading">Loading...</div>;
-    {
-      /* Apply class */
-    }
   }
 
   return (

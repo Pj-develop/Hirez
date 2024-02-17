@@ -5,6 +5,7 @@ const {
   getAllVacancies,
   deleteVacancy,
   getVacancyById,
+  getAllVacanciesForCompany,
 } = require("../modules/controller/VacancyController");
 
 // Route to create a new vacancy
@@ -16,5 +17,7 @@ router.get("/", getAllVacancies);
 router.delete("/:id", deleteVacancy);
 
 router.get("/:id", getVacancyById);
+
+router.get("/company/:companyId/vacancies", getAllVacanciesForCompany);
 
 module.exports = router;

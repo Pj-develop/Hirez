@@ -18,6 +18,7 @@ export default function CompanyNavbar({ isAuthenticated, email, onLogout }) {
   const handleLogout = () => {
     if (typeof onLogout === "function") {
       onLogout();
+      window.location.reload();
     }
   };
 

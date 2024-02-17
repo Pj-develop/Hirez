@@ -56,6 +56,23 @@ const getVacancyById = async (req, res) => {
   }
 };
 
+const getAllVacanciesForCompany = async (req, res) => {
+  try {
+    const companyId = req.params.companyId;
+    const vacancies = await Vacancy.find({
+      company: companyId,
+      status: "open",
+    }).populate("company");
+    res.status(200).json({ success: true, vacancies: vacancies });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch vacancies for the company",
+      error: error.message,
+    });
+  }
+};
+
 const deleteVacancy = async (req, res) => {
   try {
     const vacancyId = req.params.id;
@@ -85,4 +102,5 @@ module.exports = {
   getAllVacancies,
   getVacancyById,
   deleteVacancy,
+  getAllVacanciesForCompany,
 };
