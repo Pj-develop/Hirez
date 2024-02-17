@@ -20,17 +20,19 @@ import SignupCompany from "./pages/LoginSignup/SignupCompany";
 import SignupUser from "./pages/LoginSignup/SignupUser";
 import Login from "./pages/LoginSignup/Login";
 import VacancyDetails from "./pages/findJobs/VacancyDeatails";
+
 library.add(fab);
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [email, setEmail] = useState("");
   const [accountType, setAccountType] = useState("");
+  const [Id, setId] = useState(""); // Renamed from Id
 
   useEffect(() => {
     const data = localStorage.getItem("HirizloginInfo");
     if (data) {
-      const { email, token, accountType } = JSON.parse(data);
+      const { email, token, accountType, Id } = JSON.parse(data);
       if (token) {
         const decodedToken = jwtDecode(token);
         const currentTime = Date.now() / 1000;
@@ -39,8 +41,12 @@ function App() {
           setIsAuthenticated(false);
         } else {
           setIsAuthenticated(true);
-          setEmail(email); // Set email to state
-          setAccountType(accountType); // Set accountType to state
+          setEmail(email);
+          setAccountType(accountType);
+        }
+        if (Id) {
+          setId(Id); // Set Id to CompanyId state
+          console.log(`/api/vacancy/company/${Id}`);
         }
       } else {
         setIsAuthenticated(false);
@@ -51,11 +57,11 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    // Clear authentication token and update state
     localStorage.removeItem("HirizloginInfo");
     setIsAuthenticated(false);
     setEmail("");
     setAccountType("");
+    setId(""); // Clear CompanyId when logging out
   };
 
   return (
@@ -76,12 +82,23 @@ function App() {
         )}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/find" element={<FindJobs />} />
+          <Route path="/find" element={<FindJobs api="/api/vacancy" />} />
+          <Route
+            path="/vacancies"
+            element={
+              <FindJobs
+                accountType={accountType}
+                Id={Id}
+                api={`/api/vacancy/company/${Id}`}
+              />
+            }
+          />
           <Route path="/create/vacancy" element={<VacancyForm />} />
           <Route
             path="/vacancyDetails/:vacancyId"
             element={<VacancyDetails />}
           />
+          <Route path="/candidates/:vacancyId" element={<VacancyDetails />} />
           {!isAuthenticated && (
             <>
               <Route path="/company/signup" element={<SignupCompany />} />
@@ -89,7 +106,6 @@ function App() {
               <Route path="/login" element={<Login />} />
             </>
           )}
-          {/* Redirect to home for unmatched routes */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

@@ -16,7 +16,6 @@ export default function Fifth() {
           </p>
           <div className="man-image"></div>
         </div>
-
         {/* Link to /company/signup for Employer Login */}
         <Link to="/company/signup" className="btn-login">
           Employer Login <i className="bi bi-box-arrow-in-right"></i>{" "}

@@ -1,4 +1,4 @@
-const Vacancy = require("../models/VacancyModel");
+import {Vacancy} from "../models/VacancyModel.js";
 
 const createVacancy = async (req, res) => {
   try {
@@ -97,10 +97,10 @@ const deleteVacancy = async (req, res) => {
   }
 };
 
-module.exports = {
+export{
   createVacancy,
   getAllVacancies,
   getVacancyById,
   deleteVacancy,
   getAllVacanciesForCompany,
-};
+}

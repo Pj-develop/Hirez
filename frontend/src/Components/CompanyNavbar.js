@@ -38,7 +38,7 @@ export default function CompanyNavbar({ isAuthenticated, email, onLogout }) {
           <Nav.Link href="/create/vacancy" style={StyleText}>
             <b>Post Jobs</b>
           </Nav.Link>
-          <Nav.Link href="#applicants" style={StyleText}>
+          <Nav.Link href="/vacancies" style={StyleText}>
             <b>Search Applicants</b>
           </Nav.Link>
         </Nav>

@@ -1,5 +1,5 @@
-const User = require("../models/UserModel");
-const jwt = require("jsonwebtoken");
+import {User} from "../models/UserModel.js";
+import jwt from "jsonwebtoken";
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "5d" });
@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
     // creating a token
     const token = createToken(user._id);
 
-    res.json({ email: user.email, token, accountType: "user" }); // Added accountType
+    res.json({ email: user.email, token, accountType: "user", Id: user._id }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -45,7 +45,12 @@ const signUp = async (req, res) => {
     // creating a token
     const token = createToken(newUser._id);
 
-    res.json({ email: newUser.email, token, accountType: "user" }); // Added accountType
+    res.json({
+      email: user.email,
+      token,
+      accountType: "user",
+      Id: newUser._id,
+    }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -71,5 +76,4 @@ const getSingleUser = async (req, res) => {
 };
 
 //#endregion
-
-module.exports = { loginUser, signUp, getSingleUser };
+export { loginUser, signUp, getSingleUser };

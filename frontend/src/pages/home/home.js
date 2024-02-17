@@ -6,7 +6,7 @@ import Third from "./componentHome/third";
 import Second from "./componentHome/second";
 import Fifth from "./componentHome/fifth";
 import Fourth from "./componentHome/fourth";
-// import Footer from "./componentHome/footer";
+
 library.add(fab);
 
 function home() {
