@@ -1,12 +1,12 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const {
+import {
   createVacancy,
   getAllVacancies,
   deleteVacancy,
   getVacancyById,
   getAllVacanciesForCompany,
-} = require("../modules/controller/VacancyController");
+} from "../modules/controller/VacancyController.js";
 
 // Route to create a new vacancy
 router.post("/create", createVacancy);
@@ -20,4 +20,4 @@ router.get("/:id", getVacancyById);
 
 router.get("/company/:companyId/vacancies", getAllVacanciesForCompany);
 
-module.exports = router;
+export default router;

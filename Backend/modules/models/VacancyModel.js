@@ -1,5 +1,5 @@
 //#region require
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 //#endregion
 
 const Schema = mongoose.Schema;
@@ -63,4 +63,5 @@ const VacancySchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Vacancy", VacancySchema);
+const Vacancy = mongoose.model("Vacancy", VacancySchema);
+export {Vacancy};
