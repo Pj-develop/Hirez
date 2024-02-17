@@ -17,7 +17,7 @@ export default function fifth() {
         </div>
 
         <button className="btn-login">
-          Employer Login <i class="bi bi-box-arrow-in-right"></i>{" "}
+          Employer Login <i className="bi bi-box-arrow-in-right"></i>{" "}
         </button>
 
         <button className="btn-1">
