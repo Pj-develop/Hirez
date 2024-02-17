@@ -1,4 +1,4 @@
-import {User} from "../models/UserModel.js";
+import { User } from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
 
 const createToken = (_id) => {
@@ -10,19 +10,8 @@ const createToken = (_id) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    // Find user by email
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    // Match password
-    const isMatch = await user.comparePassword(password);
-
-    if (!isMatch) {
-      throw new Error("Invalid password");
-    }
+    // Call the loginUser static method defined in your schema
+    const user = await User.loginUser(email, password);
 
     // creating a token
     const token = createToken(user._id);
@@ -35,22 +24,20 @@ const loginUser = async (req, res) => {
 
 //#endregion
 
-//#region Signup
-
 const signUp = async (req, res) => {
   try {
     const { name, phoneNo, email, password } = req.body;
-    const newUser = await User.create({ name, email, password, phoneNo });
+    const newUser = await User.signup(name, email, password, phoneNo);
 
     // creating a token
     const token = createToken(newUser._id);
 
     res.json({
-      email: user.email,
+      email: newUser.email,
       token,
       accountType: "user",
       Id: newUser._id,
-    }); // Added accountType
+    }); // Fixed typo here
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -76,4 +63,5 @@ const getSingleUser = async (req, res) => {
 };
 
 //#endregion
+
 export { loginUser, signUp, getSingleUser };
