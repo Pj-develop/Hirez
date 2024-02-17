@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./jobsCard.css";
 
-function FindJobs({ api }) {
+function FindJobs({ api, accountType, Id }) {
   const [vacancies, setVacancies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -81,11 +81,19 @@ function FindJobs({ api }) {
               <span className="job-time">Just now</span>
               <span className="job-type">{vacancy.status}</span>
             </p>
-            {/* Use Link to redirect to VacancyDetails page */}
             <Link to={`/vacancyDetails/${vacancy._id}`} className="job-button">
               View details
             </Link>
-            <button className="apply-button">Apply</button>
+            {accountType === "user" ? (
+              <Link
+                className="apply-button"
+                to={`/vacancy/apply/${Id}/${vacancy._id}`}
+              >
+                Apply
+              </Link>
+            ) : accountType === "company" ? (
+              <button className="see-Candidatates">See Candidates</button>
+            ) : null}
           </div>
         </div>
       ))}

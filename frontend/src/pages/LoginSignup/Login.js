@@ -27,7 +27,6 @@ const Login = () => {
         email: formData.email,
         password: formData.password,
       });
-      console.log("Login successful:", res.data);
 
       // Store the response in localStorage
       localStorage.setItem("HirizloginInfo", JSON.stringify(res.data));
