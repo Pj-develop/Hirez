@@ -1,7 +1,8 @@
 import React from "react";
 import "./fourth.css";
 import Lottie from "lottie-react";
-export default function fourth() {
+
+export default function Fourth() {
   return (
     <div className="fourth">
       <div className="fourthLeft">
@@ -11,28 +12,24 @@ export default function fourth() {
         </p>
         <div className="featres">
           <div>
+            <h2 className="feat1H">
+              <i className="bi bi-award-fill"></i> Achievements
+            </h2>
             <ul className="feat1">
-              <h2 className="feat1H">
-                <i className="bi bi-award-fill"></i> Achievements
-              </h2>
-              <p className="feat1P">
-                <ul>Total Jobs Posted: 1000+</ul>
-                <ul>Active job seekers: 10000+</ul>
-                <ul>Total Hire made: 1000+</ul>
-              </p>
+              <li>Total Jobs Posted: 1000+</li>
+              <li>Active job seekers: 10000+</li>
+              <li>Total Hire made: 1000+</li>
             </ul>
           </div>
           <div>
+            <h2 className="feat2H">
+              <i className="bi bi-briefcase"></i> Tops skills in demand
+            </h2>
             <ul className="feat2">
-              <h2 className="feat2H">
-                <i className="bi bi-briefcase"></i> Tops skills in demand
-              </h2>
-              <p className="feat1P">
-                <ul>React</ul>
-                <ul>MongoDB</ul>
-                <ul>django</ul>
-                <ul>Cloud deployment</ul>{" "}
-              </p>
+              <li>React</li>
+              <li>MongoDB</li>
+              <li>Django</li>
+              <li>Cloud deployment</li>
             </ul>
           </div>
         </div>
