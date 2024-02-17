@@ -1,14 +1,15 @@
-const express = require("express");
-const cors = require("cors"); // Import the cors package
-require("dotenv").config();
-const app = express();
-const mongoose = require("mongoose");
-const userRoute = require("./Routes/UserRoutes");
-const vacanciesRoutes = require("./Routes/VacanciesRoutes");
-const companyRoute = require("./Routes/CompanyRoutes");
+import express from "express";
+import cors from "cors"; // Import the cors package
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import userRoute from "./Routes/UserRoutes.js";
+import vacanciesRoutes from "./Routes/VacanciesRoutes.js";
+import companyRoute from "./Routes/CompanyRoutes.js";
 
+const app = express();
 const PORT = process.env.PORT || 4001;
 
+dotenv.config();
 app.use(express.json());
 app.use(cors()); // Use cors middleware to enable CORS
 
@@ -18,8 +19,7 @@ app.use((req, res, next) => {
 });
 
 // Connection to MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => {
       console.log("DB Connected & Backend App working on " + PORT);

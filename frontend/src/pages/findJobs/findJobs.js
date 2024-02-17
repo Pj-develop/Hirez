@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./jobsCard.css";
 
-function FindJobs() {
+function FindJobs({ api, accountType, Id }) {
   const [vacancies, setVacancies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchVacancies = async () => {
       try {
-        const response = await fetch("/api/vacancy");
+        const response = await fetch(api);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -33,12 +35,26 @@ function FindJobs() {
     };
 
     fetchVacancies();
-  }, []);
+  }, [api]);
+
+  const filteredVacancies = vacancies.filter((vacancy) =>
+    vacancy.skillsRequired
+      .join(", ") // Convert array to string
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
-      {vacancies.map((vacancy) => (
+      <input
+        type="text"
+        placeholder="Skills"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      {filteredVacancies.map((vacancy) => (
         <div key={vacancy._id} className="job-card">
+          {/* Job card content */}
           <div className="job-header">
             <h2 className="job-title">{vacancy.title}</h2>
             <p className="job-company">{vacancy.company.companyName}</p>
@@ -48,6 +64,11 @@ function FindJobs() {
               ></span>
               {vacancy.isRemote ? "Work from Home" : vacancy.location}
             </p>
+            {vacancy.skillsRequired.map((skill, index) => (
+              <span className="job-type" key={index}>
+                {skill}
+              </span>
+            ))}
           </div>
           <div className="job-details">
             <p>
@@ -60,8 +81,19 @@ function FindJobs() {
               <span className="job-time">Just now</span>
               <span className="job-type">{vacancy.status}</span>
             </p>
-            <button className="job-button">View details</button>
-            <button className="apply-button">Apply</button>
+            <Link to={`/vacancyDetails/${vacancy._id}`} className="job-button">
+              View details
+            </Link>
+            {accountType === "user" ? (
+              <Link
+                className="apply-button"
+                to={`/vacancy/apply/${Id}/${vacancy._id}`}
+              >
+                Apply
+              </Link>
+            ) : accountType === "company" ? (
+              <button className="see-Candidatates">See Candidates</button>
+            ) : null}
           </div>
         </div>
       ))}

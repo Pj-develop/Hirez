@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const {
+import {
   login,
   signUp,
-} = require("../modules/controller/CompanyLoginRegister");
+}  from "../modules/controller/CompanyLoginRegister.js";
 
 //#region Login
 
@@ -18,4 +18,4 @@ router.post("/signup", signUp);
 
 //#endregion
 
-module.exports = router;
+export default router;

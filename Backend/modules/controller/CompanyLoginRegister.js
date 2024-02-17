@@ -1,5 +1,5 @@
-const Company = require("../models/companyModel");
-const jwt = require("jsonwebtoken");
+import {Company} from "../models/companyModel.js";
+import jwt  from "jsonwebtoken";
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "5d" });
@@ -16,7 +16,7 @@ const login = async (req, res) => {
     // creating a token
     const token = createToken(company._id);
 
-    res.json({ email: company.email, token });
+    res.json({ email, token, Id: company._id, accountType: "company" }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -40,15 +40,13 @@ const signUp = async (req, res) => {
 
     // creating a token
     const token = createToken(newCompany._id);
-    const id = newCompany._id;
 
-    res.json({ email, token, id });
+    res.json({ email, token, Id: newCompany._id, accountType: "company" }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
-    console.log(error);
   }
 };
 
 //#endregion
 
-module.exports = { login, signUp };
+export{ login, signUp };

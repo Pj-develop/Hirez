@@ -1,5 +1,5 @@
-const User = require("../models/UserModel");
-const jwt = require("jsonwebtoken");
+import {User} from "../models/UserModel.js";
+import jwt from "jsonwebtoken";
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "5d" });
@@ -10,13 +10,24 @@ const createToken = (_id) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    // Call the login function with appropriate parameters
-    const user = await User.loginUser(email, password);
+    // Find user by email
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    // Match password
+    const isMatch = await user.comparePassword(password);
+
+    if (!isMatch) {
+      throw new Error("Invalid password");
+    }
 
     // creating a token
     const token = createToken(user._id);
 
-    res.json({ email: user.email, token });
+    res.json({ email: user.email, token, accountType: "user", Id: user._id }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -24,17 +35,22 @@ const loginUser = async (req, res) => {
 
 //#endregion
 
-//#region signup
+//#region Signup
 
 const signUp = async (req, res) => {
   try {
     const { name, phoneNo, email, password } = req.body;
-    const newUser = await User.signup(name, email, password, phoneNo);
+    const newUser = await User.create({ name, email, password, phoneNo });
 
     // creating a token
     const token = createToken(newUser._id);
 
-    res.json({ email, token });
+    res.json({
+      email: user.email,
+      token,
+      accountType: "user",
+      Id: newUser._id,
+    }); // Added accountType
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -42,4 +58,22 @@ const signUp = async (req, res) => {
 
 //#endregion
 
-module.exports = { loginUser, signUp };
+//#region Get Single User by ID
+
+const getSingleUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    res.json({ user, accountType: "user" }); // Added accountType
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+//#endregion
+export { loginUser, signUp, getSingleUser };
