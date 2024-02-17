@@ -3,16 +3,20 @@ import First from "./componentHome/first";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import Third from "./componentHome/third";
-library.add(fab);
 import Second from "./componentHome/second";
 import Fifth from "./componentHome/fifth";
+import Fourth from "./componentHome/fourth";
+// import Footer from "./componentHome/footer";
+library.add(fab);
 
 function home() {
   return (
     <div>
       <First />
-      <Third />
+      
       <Second />
+      <Third />
+      <Fourth/>
       <Fifth />
     </div>
   );

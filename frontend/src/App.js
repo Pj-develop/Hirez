@@ -12,6 +12,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserNavbar from "./Components/UserNavbar";
 import CompanyNavbar from "./Components/CompanyNavbar";
+import Footer from "./Components/Footer";
 import Home from "./pages/home/home";
 import FindJobs from "./pages/findJobs/findJobs";
 import VacancyForm from "./pages/CreateVacancy/VacancyForm";
@@ -91,6 +92,7 @@ function App() {
           {/* Redirect to home for unmatched routes */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

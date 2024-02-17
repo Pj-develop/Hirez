@@ -4,14 +4,13 @@
     box-sizing: border-box;
     font-family: 'popins', sans-serif;
 }
-.third{
-    margin-top: 9rem;
-    /* background-image: url(./Bgthird.svg); */
-    background-color: #009688;
+.fourth{
+    /* margin-top: 9rem; */
+    /* background-image: url(./Bgfourth.svg); */
+    background-color: #FF5722;
     display: flex;
     /* width: 50%; */
     /* gap: 10rem; */
-    margin-bottom: 0px;
 }
 #Head{
     padding-top: 4rem;
@@ -59,12 +58,14 @@
 .feat1P{
     padding-left: 4rem;
 }
-.thirdRight{
+.fourthRight{
     padding-left: 0px;
     /* height: 10px; */
     margin-left: 20rem;
-    /* width: 90%; */
+    width: 40%;
+    padding-top: 8rem;
 }
-.thirdLeft{
-    width:70%;
+.fourthLeft{
+    width: 40%;
+    
 }

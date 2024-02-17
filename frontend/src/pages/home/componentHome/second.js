@@ -4,14 +4,14 @@ import Marquee from "../../../Components/Marquee";
 
 export default function second() {
   const logos = [
-    require("./google.png"),
-    require("./google.png"),
-    require("./google.png"),
-    require("./cipher.png"),
-    require("./amazon.png"),
-    require("./google.png"),
-    require("./google.png"),
-    require("./google.png"),
+    require("./google1.png"),
+    require("./microsoft.png"),
+    require("./netflix.png"),
+    require("./firstcry.png"),
+    require("./paytm.png"),
+    require("./infosys.png"),
+    require("./allianz.png"),
+    require("./wipro.png"),
   ]; // Replace with your logo URLs
   const speed = "20s"; // Adjust the speed of the marquee animation
 
