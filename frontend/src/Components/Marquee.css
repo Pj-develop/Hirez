@@ -1,0 +1,27 @@
+/* Marquee.css */
+
+.marquee-container {
+  display: flex;
+  overflow: none;
+  white-space: nowrap;
+  animation: marqueeAnimation linear infinite;
+  width: 60rem;
+}
+
+@keyframes marqueeAnimation {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-logo {
+  margin-right: 5rem; /* Adjust the spacing between logos */
+}
+
+.marquee-logo img {
+  width: 200px; /* Adjust the size of the logos */
+  height: auto;
+}
