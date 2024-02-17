@@ -7,7 +7,7 @@ const createVacancy = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Vacancy created successfully",
-      vacancy: { newVacancy },
+      vacancy: newVacancy, // Remove the unnecessary object wrapping
     });
   } catch (error) {
     res.status(500).json({
@@ -28,6 +28,29 @@ const getAllVacancies = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to fetch vacancies",
+      error: error.message,
+    });
+  }
+};
+
+const getVacancyById = async (req, res) => {
+  try {
+    const vacancyId = req.params.id;
+    const vacancy = await Vacancy.findById(vacancyId).populate("company");
+    if (!vacancy) {
+      return res.status(404).json({
+        success: false,
+        message: "Vacancy not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      vacancy: vacancy,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch vacancy",
       error: error.message,
     });
   }
@@ -57,4 +80,9 @@ const deleteVacancy = async (req, res) => {
   }
 };
 
-module.exports = { createVacancy, getAllVacancies, deleteVacancy };
+module.exports = {
+  createVacancy,
+  getAllVacancies,
+  getVacancyById,
+  deleteVacancy,
+};

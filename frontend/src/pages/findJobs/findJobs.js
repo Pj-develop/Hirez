@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./jobsCard.css";
 
 function FindJobs() {
@@ -60,7 +61,10 @@ function FindJobs() {
               <span className="job-time">Just now</span>
               <span className="job-type">{vacancy.status}</span>
             </p>
-            <button className="job-button">View details</button>
+            {/* Use Link to redirect to VacancyDetails page */}
+            <Link to={`/vacancyDetails/${vacancy._id}`} className="job-button">
+              View details
+            </Link>
             <button className="apply-button">Apply</button>
           </div>
         </div>

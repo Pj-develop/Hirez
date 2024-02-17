@@ -18,6 +18,7 @@ import VacancyForm from "./pages/CreateVacancy/VacancyForm";
 import SignupCompany from "./pages/LoginSignup/SignupCompany";
 import SignupUser from "./pages/LoginSignup/SignupUser";
 import Login from "./pages/LoginSignup/Login";
+import VacancyDetails from "./pages/findJobs/VacancyDeatails";
 library.add(fab);
 
 function App() {
@@ -76,7 +77,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/find" element={<FindJobs />} />
           <Route path="/create/vacancy" element={<VacancyForm />} />
-
+          <Route
+            path="/vacancyDetails/:vacancyId"
+            element={<VacancyDetails />}
+          />
           {!isAuthenticated && (
             <>
               <Route path="/company/signup" element={<SignupCompany />} />
@@ -84,7 +88,6 @@ function App() {
               <Route path="/login" element={<Login />} />
             </>
           )}
-
           {/* Redirect to home for unmatched routes */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
