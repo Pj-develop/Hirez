@@ -1,6 +1,10 @@
+*{
+  font-family: 'poppins', sans-serif;
+}
 .App {
   text-align: center;
   background-color: white;
+  
 }
 
 .App-header {
