@@ -1,5 +1,5 @@
-const Company = require("../models/companyModel");
-const jwt = require("jsonwebtoken");
+import {Company} from "../models/companyModel.js";
+import jwt  from "jsonwebtoken";
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "5d" });
@@ -50,4 +50,4 @@ const signUp = async (req, res) => {
 
 //#endregion
 
-module.exports = { login, signUp };
+export{ login, signUp };
