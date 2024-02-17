@@ -54,9 +54,9 @@ form {
     outline: 1px solid #009688 
   }
   
-  button {
+  /* button {
     /* Just a little styling to make it pretty */
-    border:1px solid #009688;
+    /* border:1px solid #009688;
     background:#009688;
     color:white;
     border-radius: 50px;
@@ -64,5 +64,20 @@ form {
     width:  6rem;
     height: 3.5rem;
     margin-top: .5rem;
-    margin-right: .5rem;
-  }
+    margin-right: .5rem; */
+  /* } */ 
+  .find-jobs-button {
+    background-color: #009688; /* Default color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.find-jobs-button:hover {
+    background-color: #FF5722; /* New color on hover */
+}
+
