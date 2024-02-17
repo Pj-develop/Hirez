@@ -20,5 +20,5 @@ export default function first() {
             <Lottie animationData={require('./hired.json')}/>
         </div>
     </div>
-  )
+  );
 }
