@@ -77,16 +77,16 @@ export default function App() {
                 Subscribe to our newsletter
               </p>
 
-              <div class="input-group mb-3">
+              <div className="input-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Email Address"
                   aria-label="Email Address"
                   aria-describedby="button-addon2"
-                />{" "}
+                />
                 <button
-                  class="btn btn-success"
+                  className="btn btn-success"
                   type="button"
                   id="button-addon2"
                 >
@@ -95,7 +95,7 @@ export default function App() {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-arrow-right-circle"
+                    className="bi bi-arrow-right-circle"
                     viewBox="0 0 16 16"
                   >
                     <path
