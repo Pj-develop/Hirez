@@ -3,12 +3,15 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'popins', sans-serif;
+    /* background-color: white; */
 }
 .Hero{
   margin-top: 5rem;
     display: flex;
     justify-content: space-between;
     gap: 5rem;
+    background-color: white;
+    
 }
 .left{
     padding-top: 6rem;
