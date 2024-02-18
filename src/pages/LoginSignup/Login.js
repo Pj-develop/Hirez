@@ -58,14 +58,14 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
-      <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto", backgroundColor:"#009688", borderRadius:"20px"}}>
+      <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#E0F1E0", fontWeight:"700", fontSize:"3rem" }}>
         Login
       </h2>
       {error && <p style={{ color: "red" }}>{error}</p>}{" "}
       {/* Display error message if exists */}
       <form onSubmit={handleSubmit}>
-        <label style={{ display: "block" }}>
+        <label style={{ display: "block",color: "#E0F1E0" }}>
           Select User Type:
           <select
             name="userType"
@@ -91,6 +91,7 @@ const Login = () => {
           onChange={handleChange}
           style={{
             width: "100%",
+            borderRadius: "10px",
             padding: "10px",
             marginBottom: "10px",
             border: "1px solid #ccc",
@@ -106,6 +107,7 @@ const Login = () => {
           onChange={handleChange}
           style={{
             width: "100%",
+            borderRadius: "10px",
             padding: "10px",
             marginBottom: "10px",
             border: "1px solid #ccc",
