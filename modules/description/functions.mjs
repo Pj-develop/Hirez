@@ -3,20 +3,6 @@
 
 const functionDescription = [
   {
-    name: "writeFile",
-    description: "write the asked content by user into text file",
-    parameters: {
-      type: "object",
-      properties: {
-        content: {
-          type: "string",
-          description: "content that user wants to write",
-        },
-      },
-    },
-    required: ["content"],
-  },
-  {
     name: "getUsersAi",
     description:
       "Get Applicant's details score in interview, email, name, phoneNo., Disclamer: don't send password",
@@ -52,6 +38,11 @@ const functionDescription = [
     description:
       "Search for vacancies which are open for applicants note don't send application id. Unit of Expected Salary: is Rs ",
   },
+  // {
+  //   name: "docVacancy",
+  //   description:
+  //     "this function is called to find relevant jobs for when document is sent",
+  // },
 ];
 
 export { functionDescription };

@@ -1,9 +1,9 @@
 // Import necessary modules
 import express from "express";
 import multer from "multer";
-import audioToSpeech from "../speech/audioToSpeech.js";
-import runOpenAIRequest from "../openai/ai.js";
+import ReadDocument from "../document/ReadDocument.js";
 // Create an instance of Express
+import runOpenAIRequest from "../openai/ai.js";
 const app = express();
 
 // Configure multer to store uploaded files
@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/"); // Uploads will be stored in the 'uploads' directory
   },
   filename: function (req, file, cb) {
-    cb(null, "recording.wav"); // Uploaded files will be named 'recording.wav'
+    cb(null, "resume.pdf"); // Uploaded files will be named 'resume.pdf'
   },
 });
 
@@ -20,11 +20,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Route to handle file upload
-app.post("/", upload.single("audioFile"), async (req, res) => {
+app.post("/", upload.single("pdfFile"), async (req, res) => {
   console.log("File uploaded successfully.");
-  let response = await audioToSpeech("./uploads/recording.wav");
+  let response = await ReadDocument("./uploads/resume.pdf");
   console.log(response);
-  response = await runOpenAIRequest(response);
+  response = await runOpenAIRequest(
+    "find suitable vacancy for this resume " + response
+  );
   res.status(200).send({ response });
   console.log("file to text response sent ");
 });

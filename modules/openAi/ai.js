@@ -77,10 +77,19 @@ const runOpenAIRequest = async (Input) => {
             emailArgs.emailAddress,
             emailArgs.Body
           );
+          await delay(500);
           // await delay(2000);
           break;
         case "getAllVacancies":
           // Make API call to retrieve vacancies
+          try {
+            function_response = await getAllVacancies();
+            console.log(function_response);
+          } catch (error) {
+            console.error("Error fetching vacancies:", error);
+          }
+          break;
+        case "docVacany":
           try {
             function_response = await getAllVacancies();
             console.log(function_response);
