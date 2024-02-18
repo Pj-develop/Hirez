@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import "./Login.css"; // Import the CSS file
 
@@ -9,6 +9,8 @@ const Login = () => {
     userType: "individual",
   });
 
+  const [error, setError] = useState(null); // Define error state
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -16,7 +18,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
+      // Validate input (client-side)
+      if (!validateEmail(formData.email)) {
+        throw new Error("Invalid email format");
+      }
+      if (!formData.password) {
+        throw new Error("Password cannot be empty");
+      }
+
+      // Determine endpoint based on user type
       let endpoint;
       if (formData.userType === "individual") {
         endpoint = "/api/user/login";
@@ -24,27 +36,34 @@ const Login = () => {
         endpoint = "/api/company/login";
       }
 
-      const res = await axios.post(endpoint, {
-        email: formData.email,
-        password: formData.password,
+      // Secure communication (HTTPS)
+      const response = await axios.post(endpoint, formData, {
+        // Authentication and other security headers as needed
       });
 
-      // Store the response in localStorage
-      localStorage.setItem("HirizloginInfo", JSON.stringify(res.data));
-
-      console.log(JSON.stringify(res.data));
-
-      // Reload the page after successful login
+      // Handle successful login
+      console.log("Login successful:", response.data);
+      localStorage.setItem("HirizloginInfo", JSON.stringify(response.data));
       window.location.reload();
     } catch (error) {
-      console.error("Login failed:", error.response.data);
-      // Handle error, show error message, etc.
+      console.error("Login failed:", error.message);
+      // Display user-friendly error message
     }
   };
 
+  // Client-side validation (example)
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
   return (
-    <div className="container1"> {/* Use className instead of style */}
-      <h2 className="title1">Login</h2> {/* Use className instead of style */}
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
+      <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>
+        Login
+      </h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
+      {/* Display error message if exists */}
       <form onSubmit={handleSubmit}>
         <label style={{ display: "block" }}>
           Select User Type:
@@ -52,7 +71,12 @@ const Login = () => {
             name="userType"
             value={formData.userType}
             onChange={handleChange}
-            className="input"
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginBottom: "10px",
+              // border: "1px solid #ccc",
+            }}
           >
             <option value="individual">Individual</option>
             <option value="company">Company</option>
@@ -65,7 +89,12 @@ const Login = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="input"
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginBottom: "10px",
+            border: "1px solid #ccc",
+          }}
           required
         />
         <br />
@@ -75,7 +104,12 @@ const Login = () => {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          className="input1"
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginBottom: "10px",
+            border: "1px solid #ccc",
+          }}
           required
         />
         <br />

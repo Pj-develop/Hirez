@@ -18,7 +18,7 @@ export default function AppNavbar({ isAuthenticated, email, onLogout }) {
   const handleLogout = () => {
     if (typeof onLogout === "function") {
       onLogout();
-      window.reload();
+      window.location.reload();
     }
   };
 

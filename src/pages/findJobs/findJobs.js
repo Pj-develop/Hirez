@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import "./jobsCard.css";
 
-function FindJobs({ api, accountType, Id }) {
+function FindJobs({ api }) {
   const [vacancies, setVacancies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchField, setSearchField] = useState("skills"); // Default search field
+  const data = localStorage.getItem("HirizloginInfo");
+  const { accountType, Id } = JSON.parse(data);
+
+  if (accountType === "company") {
+    api += Id;
+  }
 
   useEffect(() => {
     const fetchVacancies = async () => {
@@ -13,10 +20,9 @@ function FindJobs({ api, accountType, Id }) {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json();
-        if (Array.isArray(data.vacancies)) {
-          // Sort vacancies by latest first based on createdAt or updatedAt field
-          const sortedVacancies = data.vacancies.sort((a, b) => {
+        const responseData = await response.json();
+        if (Array.isArray(responseData.vacancies)) {
+          const sortedVacancies = responseData.vacancies.sort((a, b) => {
             return (
               new Date(b.createdAt || b.updatedAt) -
               new Date(a.createdAt || a.updatedAt)
@@ -26,7 +32,7 @@ function FindJobs({ api, accountType, Id }) {
         } else {
           console.error(
             "Data fetched does not contain an array of vacancies:",
-            data
+            responseData
           );
         }
       } catch (error) {
@@ -35,26 +41,64 @@ function FindJobs({ api, accountType, Id }) {
     };
 
     fetchVacancies();
-  }, [api]);
+  }, [api, data]);
 
-  const filteredVacancies = vacancies.filter((vacancy) =>
-    vacancy.skillsRequired
-      .join(", ") // Convert array to string
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
-  );
+  const filteredVacancies = vacancies.filter((vacancy) => {
+    if (searchField === "title") {
+      return vacancy.title.toLowerCase().includes(searchQuery.toLowerCase());
+    } else if (searchField === "skills") {
+      return vacancy.skillsRequired
+        .join(", ")
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+    }
+    return false;
+  });
+
+  // Function to handle job application
+  const applyForJob = async (vacancyId) => {
+    try {
+      const response = await fetch(`/api/vacancy/apply/${Id}/${vacancyId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: Id,
+          vacancyId: vacancyId,
+        }),
+      });
+      if (response.ok) {
+        // Handle successful application, e.g., show a success message
+        console.log("Application successful");
+      } else {
+        // Handle error response from the server
+        console.error("Failed to apply for the job");
+      }
+    } catch (error) {
+      console.error("Error applying for the job:", error);
+    }
+  };
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Skills"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <div>
+        <select
+          value={searchField}
+          onChange={(e) => setSearchField(e.target.value)}
+        >
+          <option value="title">Title</option>
+          <option value="skills">Skills</option>
+        </select>
+        <input
+          type="text"
+          placeholder={`Search by ${searchField}`}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
       {filteredVacancies.map((vacancy) => (
         <div key={vacancy._id} className="job-card">
-          {/* Job card content */}
           <div className="job-header">
             <h2 className="job-title">{vacancy.title}</h2>
             <p className="job-company">{vacancy.company.companyName}</p>
@@ -85,14 +129,19 @@ function FindJobs({ api, accountType, Id }) {
               View details
             </Link>
             {accountType === "user" ? (
-              <Link
+              <button
                 className="apply-button"
-                to={`/vacancy/apply/${Id}/${vacancy._id}`}
+                onClick={() => applyForJob(vacancy._id)}
               >
                 Apply
-              </Link>
+              </button>
             ) : accountType === "company" ? (
-              <button className="see-Candidatates">See Candidates</button>
+              <Link
+                to={`/candidates/${vacancy._id}`}
+                className="see-Candidatates"
+              >
+                See Candidates
+              </Link>
             ) : null}
           </div>
         </div>

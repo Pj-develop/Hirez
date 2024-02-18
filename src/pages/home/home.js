@@ -5,6 +5,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import Third from "./componentHome/third";
 import Second from "./componentHome/second";
 import Fifth from "./componentHome/fifth";
+// import "./style4.css";
 import Fourth from "./componentHome/fourth";
 
 library.add(fab);
