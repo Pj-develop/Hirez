@@ -1,8 +1,10 @@
 
 import dotenv from "dotenv";
 import OpenAI from "openai";
-import {writeFile} from "../functions/functions.js";
+import {Vacancy} from "../models/VacancyModel.js";
 import {functionDescription} from "../description/functions.mjs";
+import {getAllVacancies} from "../controller/VacancyController.js";
+import { writeFile } from "fs";
 
 dotenv.config();
 const funcDes = functionDescription;
@@ -46,6 +48,9 @@ const runOpenAIRequest = async (Input) => {
           let writeFileArgs = JSON.parse(message.function_call.arguments);
           function_response = await writeFile(writeFileArgs.content);
           break;
+        case "getAllVacancies":
+          console.log()
+          break;
         default:
           throw new Error(`Unsupported function: ${function_name}`);
       } 
@@ -75,4 +80,4 @@ const runOpenAIRequest = async (Input) => {
     }
   }
 
-export { runOpenAIRequest };
+ runOpenAIRequest("get the vacancies available ");
