@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Login.css"; // Import the CSS file
 
@@ -9,7 +9,7 @@ const Login = () => {
     userType: "individual",
   });
 
-  const [error, setError] = useState(null); // Define error state
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +22,11 @@ const Login = () => {
     try {
       // Validate input (client-side)
       if (!validateEmail(formData.email)) {
+        setError("Invalid email format");
         throw new Error("Invalid email format");
       }
       if (!formData.password) {
+        setError("Password cannot be empty");
         throw new Error("Password cannot be empty");
       }
 
@@ -46,7 +48,7 @@ const Login = () => {
       localStorage.setItem("HirizloginInfo", JSON.stringify(response.data));
       window.location.reload();
     } catch (error) {
-      console.error("Login failed:", error.message);
+      setError("Login failed:", error.message);
       // Display user-friendly error message
     }
   };

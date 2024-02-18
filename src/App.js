@@ -80,24 +80,32 @@ function App() {
         )}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/find"
-            element={<FindJobs data={data} api="/api/vacancy" />}
-          />
-          <Route
-            path="/vacancies"
-            element={<FindJobs api={"/api/vacancy/company/"} />}
-          />
-          <Route path="/create/vacancy" element={<VacancyForm />} />
-          <Route
-            path="/vacancyDetails/:vacancyId"
-            element={<VacancyDetails />}
-          />
-          <Route
-            path="/seeCandidates/:vacancyId"
-            element={<VacancyDetails />}
-          />
-          <Route path="/candidates/:vacancyId" element={<SeeCandidates />} />
+          {isAuthenticated && (
+            <>
+              <Route
+                path="/find"
+                element={<FindJobs data={data} api="/api/vacancy" />}
+              />
+              <Route
+                path="/vacancies"
+                element={<FindJobs api={"/api/vacancy/company/"} />}
+              />
+              <Route path="/create/vacancy" element={<VacancyForm />} />
+              <Route
+                path="/vacancyDetails/:vacancyId"
+                element={<VacancyDetails />}
+              />
+              <Route
+                path="/seeCandidates/:vacancyId"
+                element={<VacancyDetails />}
+              />
+              <Route
+                path="/candidates/:vacancyId"
+                element={<SeeCandidates />}
+              />
+            </>
+          )}
+
           {!isAuthenticated && (
             <>
               <Route path="/company/signup" element={<SignupCompany />} />
@@ -105,7 +113,7 @@ function App() {
               <Route path="/login" element={<Login />} />
             </>
           )}
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>

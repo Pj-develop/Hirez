@@ -10,6 +10,8 @@ const Signup = () => {
     fieldsOfWork: "",
   });
 
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -19,21 +21,17 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post("/api/company/signup", formData);
-      console.log("Signup successful:", res.data);
-
-      // Store the response in localStorage
       localStorage.setItem("HirizloginInfo", JSON.stringify(res.data));
-      console.log(JSON.stringify(res.data));
-      // Redirect or show a success message
     } catch (error) {
       console.error("Signup failed:", error.response.data);
-      // Handle error, show error message, etc.
+      setError(error.response.data.message);
     }
   };
 
   return (
     <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
       <h2>Signup</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"

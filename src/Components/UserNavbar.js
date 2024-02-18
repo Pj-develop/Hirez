@@ -38,11 +38,12 @@ export default function AppNavbar({ isAuthenticated, email, onLogout }) {
           <Nav.Link href="/find" style={StyleText}>
             <b>Find Jobs</b>
           </Nav.Link>
-          <Nav.Link href="#Companies" style={StyleText}>
-            <b>Companies</b>
-          </Nav.Link>
-          <Nav.Link href="#pricing" style={StyleText}>
-            <b>Pricing</b>
+          <Nav.Link
+            href="https://mediafiles.botpress.cloud/a13cd395-f45e-4c22-9df5-3424fe0d11ab/webchat/bot.html"
+            style={StyleText}
+            target="_blank"
+          >
+            <b>Chat Bot</b>
           </Nav.Link>
         </Nav>
         <Navbar.Toggle />

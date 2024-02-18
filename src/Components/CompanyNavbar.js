@@ -39,7 +39,14 @@ export default function CompanyNavbar({ isAuthenticated, email, onLogout }) {
             <b>Post Jobs</b>
           </Nav.Link>
           <Nav.Link href="/vacancies" style={StyleText}>
-            <b>Search Applicants</b>
+            <b>Posted Jobs</b>
+          </Nav.Link>
+          <Nav.Link
+            href="https://mediafiles.botpress.cloud/a13cd395-f45e-4c22-9df5-3424fe0d11ab/webchat/bot.html"
+            style={StyleText}
+            target="_blank"
+          >
+            <b>Chat Bot</b>
           </Nav.Link>
         </Nav>
         <Navbar.Toggle />
