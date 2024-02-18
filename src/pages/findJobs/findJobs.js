@@ -5,6 +5,7 @@ import "./jobsCard.css";
 function FindJobs({ api }) {
   const [vacancies, setVacancies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchField, setSearchField] = useState("skills"); // Default search field
   const data = localStorage.getItem("HirizloginInfo");
   const { accountType, Id } = JSON.parse(data);
 
@@ -42,12 +43,17 @@ function FindJobs({ api }) {
     fetchVacancies();
   }, [api, data]);
 
-  const filteredVacancies = vacancies.filter((vacancy) =>
-    vacancy.skillsRequired
-      .join(", ")
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
-  );
+  const filteredVacancies = vacancies.filter((vacancy) => {
+    if (searchField === "title") {
+      return vacancy.title.toLowerCase().includes(searchQuery.toLowerCase());
+    } else if (searchField === "skills") {
+      return vacancy.skillsRequired
+        .join(", ")
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+    }
+    return false;
+  });
 
   // Function to handle job application
   const applyForJob = async (vacancyId) => {
@@ -76,12 +82,21 @@ function FindJobs({ api }) {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Skills"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <div>
+        <select
+          value={searchField}
+          onChange={(e) => setSearchField(e.target.value)}
+        >
+          <option value="title">Title</option>
+          <option value="skills">Skills</option>
+        </select>
+        <input
+          type="text"
+          placeholder={`Search by ${searchField}`}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
       {filteredVacancies.map((vacancy) => (
         <div key={vacancy._id} className="job-card">
           <div className="job-header">
@@ -116,7 +131,7 @@ function FindJobs({ api }) {
             {accountType === "user" ? (
               <button
                 className="apply-button"
-                onClick={() => applyForJob(vacancy._id)} // Call applyForJob function
+                onClick={() => applyForJob(vacancy._id)}
               >
                 Apply
               </button>
