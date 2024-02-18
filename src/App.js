@@ -32,7 +32,6 @@ function App() {
 
   useEffect(() => {
     const Data = localStorage.getItem("HirizloginInfo");
-    console.log(isAuthenticated);
 
     if (Data) {
       const { email, token, accountType } = JSON.parse(Data);
