@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Login.css"; // Import the CSS file
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -42,10 +43,8 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
-      <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>
-        Login
-      </h2>
+    <div className="container1"> {/* Use className instead of style */}
+      <h2 className="title1">Login</h2> {/* Use className instead of style */}
       <form onSubmit={handleSubmit}>
         <label style={{ display: "block" }}>
           Select User Type:
@@ -53,13 +52,7 @@ const Login = () => {
             name="userType"
             value={formData.userType}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "10px",
-              marginBottom: "10px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-            }}
+            className="input"
           >
             <option value="individual">Individual</option>
             <option value="company">Company</option>
@@ -72,13 +65,7 @@ const Login = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginBottom: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
+          className="input"
           required
         />
         <br />
@@ -88,29 +75,11 @@ const Login = () => {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginBottom: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
+          className="input1"
           required
         />
         <br />
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "10px",
-            background: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            transition: "background 0.3s ease",
-          }}
-        >
+        <button type="submit" className="submitButton1">
           Login
         </button>
       </form>
