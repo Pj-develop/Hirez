@@ -1,6 +1,6 @@
 import express from "express";
 import { dirname } from "path";
-import runOpenAIRequest from "../openai/ai.js";
+import runOpenAIRequest from "../openAi/ai.js";
 import bodyParser from "body-parser";
 
 const app = express();

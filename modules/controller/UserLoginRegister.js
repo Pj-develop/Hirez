@@ -24,6 +24,17 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getUsersAi = async (req, res) => {
+  try {
+    // Call the loginUser static method defined in your schema
+    const user = await User.find();
+
+    return JSON.stringify(user);
+    console.log(user);
+  } catch (error) {
+    return JSON.stringify({ error: error.message });
+  }
+};
 //#endregion
 
 const signUp = async (req, res) => {
@@ -66,4 +77,4 @@ const getSingleUser = async (req, res) => {
 
 //#endregion
 
-export { loginUser, signUp, getSingleUser };
+export { loginUser, signUp, getSingleUser, getUsersAi };

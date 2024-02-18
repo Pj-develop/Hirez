@@ -4,7 +4,7 @@ import axios from "axios"; // Import Axios for making HTTP requests
 import { Vacancy } from "../models/VacancyModel.js";
 import { functionDescription } from "../description/functions.mjs";
 import { writeFile } from "fs";
-
+import { getUsersAi } from "../controller/UserLoginRegister.js";
 dotenv.config();
 
 const getAllVacancies = async () => {
@@ -69,6 +69,15 @@ const runOpenAIRequest = async (Input) => {
           // Make API call to retrieve vacancies
           try {
             function_response = await getAllVacancies();
+            console.log(function_response);
+          } catch (error) {
+            console.error("Error fetching vacancies:", error);
+          }
+          break;
+        case "getUsersAi":
+          // Make API call to retrieve vacancies
+          try {
+            function_response = await getUsersAi();
             console.log(function_response);
           } catch (error) {
             console.error("Error fetching vacancies:", error);

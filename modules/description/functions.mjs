@@ -17,6 +17,36 @@ const functionDescription = [
     required: ["content"],
   },
   {
+    name: "getUsersAi",
+    description:
+      "Get Applicant's details score in interview, email, name, phoneNo., Disclamer: don't send password",
+  },
+  {
+    name: "email",
+    description: "sends the email to the required user",
+    parameters: {
+      type: "object",
+      properties: {
+        subject: {
+          type: "string",
+          description: "subject of the email",
+        },
+        emailAddress: {
+          type: "string",
+          description:
+            "get email from getUsersAi function (be specific no examples)",
+        },
+
+        Body: {
+          type: "string",
+          description:
+            "body of the email that user wants to write and enhace the body, add your content too.",
+        },
+      },
+    },
+    required: ["Body", "email", "subject"],
+  },
+  {
     name: "getAllVacancies",
     description:
       "Search for vacancies which are open for applicants note don't send application id. Unit of Expected Salary: is Rs ",

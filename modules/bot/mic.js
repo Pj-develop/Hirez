@@ -2,7 +2,7 @@
 import express from "express";
 import multer from "multer";
 import audioToSpeech from "../speech/audioToSpeech.js";
-import runOpenAIRequest from "../openai/ai.js";
+import runOpenAIRequest from "../openAi/ai.js";
 // Create an instance of Express
 const app = express();
 
