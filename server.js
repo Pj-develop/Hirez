@@ -6,6 +6,8 @@ import userRoute from "./Routes/UserRoutes.js";
 import vacanciesRoutes from "./Routes/VacanciesRoutes.js";
 import companyRoute from "./Routes/CompanyRoutes.js";
 import applicationRoute from "./Routes/ApplicationRoutes.js";
+import bot from "./modules/bot/bot.js";
+import mic from "./modules/bot/mic.js";
 
 const app = express();
 const PORT = process.env.PORT || 4001;
@@ -35,3 +37,5 @@ app.use("/api/user", userRoute);
 app.use("/api/vacancy", vacanciesRoutes);
 app.use("/api/company", companyRoute);
 app.use("/api/vacancy", applicationRoute);
+app.use("/api/bot", bot);
+app.use("/api/mic", mic);
