@@ -29,8 +29,8 @@ const Signup = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
-      <h2>Signup</h2>
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto", backgroundColor:"#009688", borderRadius:"20px" }}>
+      <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#E0F1E0", fontWeight:"700", fontSize:"3rem" }}>Signup</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -39,7 +39,7 @@ const Signup = () => {
           name="companyName"
           value={formData.companyName}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"10px" }}
           required
         />
         <br />
@@ -49,7 +49,7 @@ const Signup = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"10px" }}
           required
         />
         <br />
@@ -59,7 +59,7 @@ const Signup = () => {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px" ,borderRadius:"10px"}}
           required
         />
         <br />
@@ -69,7 +69,7 @@ const Signup = () => {
           name="yearOfEstablishment"
           value={formData.yearOfEstablishment}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"10px" }}
           required
         />
         <br />
@@ -79,7 +79,7 @@ const Signup = () => {
           name="fieldsOfWork"
           value={formData.fieldsOfWork}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"10px" }}
           required
         />
         <br />
@@ -88,9 +88,10 @@ const Signup = () => {
           style={{
             width: "100%",
             padding: "10px",
-            background: "blue",
+            background: "#79aef5",
             color: "#fff",
             border: "none",
+            borderRadius: "10px",
           }}
         >
           Signup

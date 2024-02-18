@@ -32,7 +32,7 @@ const Signup = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" , backgroundColor:"#ff5722", borderRadius:"20px"}}>
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" , backgroundColor:"#ff5722", borderRadius:"10px"}}>
       <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#E0F1E0", fontWeight:"700", fontSize:"3rem" }}>Signup</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -41,7 +41,7 @@ const Signup = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px"}}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"10px"}}
           required
         />
         <br />
@@ -51,7 +51,7 @@ const Signup = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px"  ,border:"1px solid #ccc",borderRadius:"20px"}}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px"  ,border:"1px solid #ccc",borderRadius:"10px"}}
           required
         />
         <br />
@@ -61,7 +61,7 @@ const Signup = () => {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px"   ,border:"1px solid #ccc",borderRadius:"20px"}}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px"   ,border:"1px solid #ccc",borderRadius:"10px"}}
           required
         />
         <br />
@@ -71,7 +71,7 @@ const Signup = () => {
           name="phoneNo"
           value={formData.phoneNo}
           onChange={handleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px", borderRadius:"10px"}}
           required
         />
         <br />
@@ -83,6 +83,7 @@ const Signup = () => {
             background: "#79aef5",
             color: "#fff",
             border: "none",
+            borderRadius: "10px",
           }}
         >
           Signup
