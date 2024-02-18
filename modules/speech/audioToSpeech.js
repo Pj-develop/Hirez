@@ -1,6 +1,6 @@
 
 import dotenv from "dotenv";
-import {runOpenAIRequest} from "../openAi/ai";
+// import { runOpenAIRequest } from "../openai/ai.js";
 import fs from "fs";
 import sdk from "microsoft-cognitiveservices-speech-sdk";
 
@@ -21,7 +21,7 @@ const fromFile = async (audioPath) => {
         switch (result.reason) {
             case sdk.ResultReason.RecognizedSpeech:
                 console.log(`RECOGNIZED: Text=${result.text}`);
-                await runOpenAIRequest(result.text);
+                // await runOpenAIRequest(result.text);
                 break;
             case sdk.ResultReason.NoMatch:
                 console.log("NOMATCH: Speech could not be recognized.");
@@ -44,4 +44,6 @@ const fromFile = async (audioPath) => {
 };
 //pass the pass of audio filepath as a argument.
 //use .wav file for this
-export {fromFile };
+// export {fromFile };
+
+export default fromFile
