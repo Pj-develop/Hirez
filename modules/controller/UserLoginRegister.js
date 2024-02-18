@@ -15,8 +15,10 @@ const loginUser = async (req, res) => {
 
     // creating a token
     const token = createToken(user._id);
+    const Id = user._id.toString();
 
-    res.json({ email: user.email, token, accountType: "user", Id: user._id }); // Added accountType
+    res.json({ email: user.email, token, accountType: "user", Id: Id });
+    console.log(Id);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -37,7 +39,7 @@ const signUp = async (req, res) => {
       token,
       accountType: "user",
       Id: newUser._id,
-    }); // Fixed typo here
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
