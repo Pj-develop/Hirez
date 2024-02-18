@@ -8,7 +8,7 @@ function FindJobs({ api }) {
   const [searchField, setSearchField] = useState("skills");
   const [isApplying, setIsApplying] = useState(false);
   const data = localStorage.getItem("HirizloginInfo");
-  const { accountType, Id } = JSON.parse(data);
+  let { accountType, Id } = JSON.parse(data);
 
   if (!accountType) {
     accountType = "user";

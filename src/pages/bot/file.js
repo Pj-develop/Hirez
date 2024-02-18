@@ -30,6 +30,7 @@ class FileBot extends Component {
         .then((response) => {
           if (response.ok) {
             console.log("File sent to the backend successfully.");
+
             // You can handle further actions upon successful response
           } else {
             console.error("Failed to send file to the backend.");
