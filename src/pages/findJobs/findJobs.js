@@ -44,17 +44,30 @@ function FindJobs({ api }) {
     fetchVacancies();
   }, [api, data]);
 
-  const filteredVacancies = vacancies.filter((vacancy) => {
-    if (searchField === "title") {
-      return vacancy.title.toLowerCase().includes(searchQuery.toLowerCase());
-    } else if (searchField === "skills") {
-      return vacancy.skillsRequired
-        .join(", ")
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
+  // Assuming this line gets user data from localStorage
+  const userData = JSON.parse(localStorage.getItem(Id));
+
+  // Function to check if a vacancyId exists in user data
+  const isVacancyAlreadyApplied = (vacancyId) => {
+    if (userData && userData.vacancyId === vacancyId) {
+      return true;
     }
     return false;
-  });
+  };
+
+  const filteredVacancies = vacancies
+    .filter((vacancy) => {
+      if (searchField === "title") {
+        return vacancy.title.toLowerCase().includes(searchQuery.toLowerCase());
+      } else if (searchField === "skills") {
+        return vacancy.skillsRequired
+          .join(", ")
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+      }
+      return false;
+    })
+    .filter((vacancy) => !isVacancyAlreadyApplied(vacancy._id));
 
   // Function to handle job application
   const applyForJob = async (vacancyId) => {
@@ -72,6 +85,12 @@ function FindJobs({ api }) {
       });
       if (response.ok) {
         // Handle successful application, e.g., show a success message
+        const userApplication = localStorage.getItem(`${Id}`);
+        localStorage.setItem(
+          `${Id}`,
+          JSON.stringify({ vacancyId: vacancyId, ...userApplication })
+        );
+
         console.log("Application successful");
       } else {
         // Handle error response from the server
@@ -105,7 +124,9 @@ function FindJobs({ api }) {
         <div key={vacancy._id} className="job-card">
           <div className="job-header">
             <h2 className="job-title">{vacancy.title}</h2>
-            <p className="job-company">{vacancy.company.companyName}</p>
+            {vacancy.company && (
+              <p className="job-company">{vacancy.company.companyName}</p>
+            )}
             <p className="job-location">
               <span
                 className={vacancy.isRemote ? "bi-house" : "bi-geo-alt"}

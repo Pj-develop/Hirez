@@ -21,6 +21,8 @@ import SignupUser from "./pages/LoginSignup/SignupUser";
 import Login from "./pages/LoginSignup/Login";
 import VacancyDetails from "./pages/findJobs/VacancyDeatails";
 import SeeCandidates from "./pages/findJobs/SeeCandidates";
+import Bot from "./pages/bot/bot";
+import Mic from "./pages/bot/Mic";
 
 library.add(fab);
 
@@ -89,6 +91,8 @@ function App() {
             element={<FindJobs api={"/api/vacancy/company/"} />}
           />
           <Route path="/create/vacancy" element={<VacancyForm />} />
+          <Route path="/bot" element={<Bot />} />
+          <Route path="/mic" element={<Mic />} />
           <Route
             path="/vacancyDetails/:vacancyId"
             element={<VacancyDetails />}
