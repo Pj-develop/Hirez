@@ -4,22 +4,13 @@ const Schema = mongoose.Schema;
 
 const ApplicationSchema = new Schema(
   {
-    applicantName: {
+    userId: {
       type: String,
       required: true,
-    },
-    applicantEmail: {
-      type: String,
-      required: true,
-    },
-    coverLetter: String,
-    resume: {
-      data: Buffer, // Store binary data of the file
-      contentType: String, // Store the content type of the file (e.g., 'application/pdf')
     },
     status: {
       type: String,
-      default: "Pending", // You can have statuses like 'Pending', 'Accepted', 'Rejected', etc.
+      default: "Pending",
     },
     vacancyId: {
       type: Schema.Types.ObjectId,
@@ -32,4 +23,4 @@ const ApplicationSchema = new Schema(
 
 const Application = mongoose.model("Application", ApplicationSchema);
 
-export{Application};
+export { Application };
