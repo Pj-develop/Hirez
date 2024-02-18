@@ -8,6 +8,8 @@ const Login = () => {
     userType: "individual",
   });
 
+  const [error, setError] = useState(null); // Define error state
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -37,7 +39,7 @@ const Login = () => {
       window.location.reload();
     } catch (error) {
       console.error("Login failed:", error.response.data);
-      // Handle error, show error message, etc.
+      setError(error.response.data.message); // Set error message in state
     }
   };
 
@@ -46,6 +48,8 @@ const Login = () => {
       <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>
         Login
       </h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
+      {/* Display error message if exists */}
       <form onSubmit={handleSubmit}>
         <label style={{ display: "block" }}>
           Select User Type:

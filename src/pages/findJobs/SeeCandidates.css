@@ -1,0 +1,93 @@
+* {
+  font-family: "poppins", sans-serif;
+}
+.profile-card {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1);
+  border-color: teal;
+  border-width: 3px;
+  text-align: center;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.skills {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sk {
+  display: inline-block;
+  padding: 5px 1px;
+  background-color: #eee;
+  color: #666;
+  /* font-weight: bold; */
+  border-radius: 10px;
+}
+
+.s {
+  display: inline-block;
+  padding: 4px 1px;
+  background-color: #eee;
+  color: #666;
+  /* font-weight: bold; */
+  border-radius: 10px;
+}
+.e {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #eee;
+  color: #666;
+  /* font-weight: bold; */
+  border-radius: 10px;
+}
+.sk {
+  display: inline-block;
+  padding: 4px 1px;
+  background-color: #eee;
+  color: #666;
+  /* font-weight: bold; */
+  border-radius: 10px;
+}
+
+.k {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #eee;
+  color: #666;
+  /* font-weight: bold; */
+  border-radius: 10px;
+}
+.button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reject {
+  background-color: teal;
+  color: white;
+}
+
+.waitlist {
+  background-color: teal;
+  color: white;
+}
+
+.preview {
+  background-color: teal;
+  color: white;
+}
