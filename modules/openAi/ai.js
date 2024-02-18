@@ -5,7 +5,12 @@ import { Vacancy } from "../models/VacancyModel.js";
 import { functionDescription } from "../description/functions.mjs";
 import { writeFile } from "fs";
 import { getUsersAi } from "../controller/UserLoginRegister.js";
+import email from "../email/email.js";
 dotenv.config();
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 const getAllVacancies = async () => {
   try {
@@ -64,6 +69,15 @@ const runOpenAIRequest = async (Input) => {
           // let writeFileArgs = JSON.parse(message.function_call.arguments);
           // function_response = await writeFile(writeFileArgs.content);
           console.log("called write function");
+          break;
+        case "email":
+          let emailArgs = JSON.parse(message.function_call.arguments);
+          function_response = email(
+            emailArgs.subject,
+            emailArgs.emailAddress,
+            emailArgs.Body
+          );
+          // await delay(2000);
           break;
         case "getAllVacancies":
           // Make API call to retrieve vacancies

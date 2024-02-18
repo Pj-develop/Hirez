@@ -23,7 +23,8 @@ const functionDescription = [
   },
   {
     name: "email",
-    description: "sends the email to the required user",
+    description:
+      "takes emails from database of applicants and sends the email to the asked applicant ",
     parameters: {
       type: "object",
       properties: {
