@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 
 const Login = () => {
@@ -15,7 +15,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
+      // Validate input (client-side)
+      if (!validateEmail(formData.email)) {
+        throw new Error("Invalid email format");
+      }
+      if (!formData.password) {
+        throw new Error("Password cannot be empty");
+      }
+
+      // Determine endpoint based on user type
       let endpoint;
       if (formData.userType === "individual") {
         endpoint = "/api/user/login";
@@ -23,23 +33,25 @@ const Login = () => {
         endpoint = "/api/company/login";
       }
 
-      const res = await axios.post(endpoint, {
-        email: formData.email,
-        password: formData.password,
+      // Secure communication (HTTPS)
+      const response = await axios.post(endpoint, formData, {
+        // Authentication and other security headers as needed
       });
-      console.log("Login successful:", res.data);
 
-      // Store the response in localStorage
-      localStorage.setItem("HirizloginInfo", JSON.stringify(res.data));
-
-      console.log(JSON.stringify(res.data));
-
-      // Reload the page after successful login
+      // Handle successful login
+      console.log("Login successful:", response.data);
+      localStorage.setItem("HirizloginInfo", JSON.stringify(response.data));
       window.location.reload();
     } catch (error) {
-      console.error("Login failed:", error.response.data);
-      // Handle error, show error message, etc.
+      console.error("Login failed:", error.message);
+      // Display user-friendly error message
     }
+  };
+
+  // Client-side validation (example)
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
   };
 
   return (
@@ -58,8 +70,7 @@ const Login = () => {
               width: "100%",
               padding: "10px",
               marginBottom: "10px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
+              // border: "1px solid #ccc",
             }}
           >
             <option value="individual">Individual</option>
@@ -78,7 +89,6 @@ const Login = () => {
             padding: "10px",
             marginBottom: "10px",
             border: "1px solid #ccc",
-            borderRadius: "4px",
           }}
           required
         />
@@ -94,7 +104,6 @@ const Login = () => {
             padding: "10px",
             marginBottom: "10px",
             border: "1px solid #ccc",
-            borderRadius: "4px",
           }}
           required
         />
