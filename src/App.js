@@ -23,6 +23,7 @@ import VacancyDetails from "./pages/findJobs/VacancyDeatails";
 import SeeCandidates from "./pages/findJobs/SeeCandidates";
 import Bot from "./pages/bot/bot";
 import Mic from "./pages/bot/Mic";
+import File from "./pages/bot/file";
 
 library.add(fab);
 
@@ -93,6 +94,7 @@ function App() {
           <Route path="/create/vacancy" element={<VacancyForm />} />
           <Route path="/bot" element={<Bot />} />
           <Route path="/mic" element={<Mic />} />
+          <Route path="/file" element={<File />} />
           <Route
             path="/vacancyDetails/:vacancyId"
             element={<VacancyDetails />}

@@ -10,6 +10,9 @@ function FindJobs({ api }) {
   const data = localStorage.getItem("HirizloginInfo");
   const { accountType, Id } = JSON.parse(data);
 
+  if (!accountType) {
+    accountType = "user";
+  }
   if (accountType === "company") {
     api += Id;
   }

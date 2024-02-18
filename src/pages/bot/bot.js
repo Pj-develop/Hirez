@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function BotComponent() {
   const [inputValue, setInputValue] = useState("");
   const [response, setResponse] = useState(null);
