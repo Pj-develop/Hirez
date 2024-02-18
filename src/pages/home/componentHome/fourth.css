@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'popins', sans-serif;
+}
+.fourth{
+    /* margin-top: 9rem; */
+    /* background-image: url(./Bgfourth.svg); */
+    background-color: #FF5722;
+    display: flex;
+    /* width: 50%; */
+    /* gap: 10rem; */
+}
+#Head{
+    padding-top: 4rem;
+    padding-left: 3rem;
+    text-align: left;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #E0F1E0;
+    font-stretch:extra-expanded;
+}
+.p1{
+    padding-top: 2rem;
+    padding-left: 3rem;
+    text-align: left;
+    font-weight: 900;
+    font-size: 1rem;
+    color: #E0F1E0;
+    font-stretch:extra-expanded;
+}
+.featres{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: left; */
+    padding-top: 3rem;
+     /* padding-left: 2px; 
+     margin-left: 0px; */
+    /* padding-right: 3rem;  */
+    padding-bottom: 3rem;
+}
+.Elist{
+    padding-left: 2rem;
+    list-style: none;
+}
+.feat1,.feat2,.feat3{
+    color: #E0F1E0;
+    text-align: left;
+    padding-left: 100px;
+    /* margin-bottom: rem; */
+}
+.featH{
+    font-size: 5rem;
+    padding-top: 0px;
+    font-weight: 900;
+}
+.feat1P{
+    padding-left: 4rem;
+}
+.fourthRight{
+    padding-left: 0px;
+    /* height: 10px; */
+    margin-left: 20rem;
+    width: 40%;
+    padding-top: 8rem;
+}
+.fourthLeft{
+    width: 40%;
+    
+}

@@ -1,0 +1,110 @@
+.job-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 650px;
+  height: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.job-header {
+  width: 50%;
+}
+
+.job-title {
+  margin: 10px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.job-status {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: limegreen;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.job-title {
+  margin: 10px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.job-company {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.home-button {
+  width: 100px;
+  padding: 1px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  margin-top: 1px;
+}
+
+.see-Candidatates,
+.apply-button {
+  background-color: limegreen;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.job-details {
+  width: 40%;
+}
+
+.job-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.job-time {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #eee;
+  color: #666;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.job-type {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #eee;
+  color: #666;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.job-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.job-location {
+  font-size: 18px;
+  color: #333;
+}
