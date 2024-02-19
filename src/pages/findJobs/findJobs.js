@@ -5,7 +5,8 @@ import "./jobsCard.css";
 function FindJobs({ api }) {
   const [vacancies, setVacancies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchField, setSearchField] = useState("skills"); // Default search field
+  const [searchField, setSearchField] = useState("skills");
+  const [isApplying, setIsApplying] = useState(false);
   const data = localStorage.getItem("HirizloginInfo");
   const { accountType, Id } = JSON.parse(data);
 
@@ -58,6 +59,7 @@ function FindJobs({ api }) {
   // Function to handle job application
   const applyForJob = async (vacancyId) => {
     try {
+      setIsApplying(true); // Start applying animation
       const response = await fetch(`/api/vacancy/apply/${Id}/${vacancyId}`, {
         method: "POST",
         headers: {
@@ -77,6 +79,8 @@ function FindJobs({ api }) {
       }
     } catch (error) {
       console.error("Error applying for the job:", error);
+    } finally {
+      setIsApplying(false); // Stop applying animation
     }
   };
 
@@ -132,8 +136,9 @@ function FindJobs({ api }) {
               <button
                 className="apply-button"
                 onClick={() => applyForJob(vacancy._id)}
+                disabled={isApplying} // Disable button during applying animation
               >
-                Apply
+                {isApplying ? "Applying..." : "Apply"}
               </button>
             ) : accountType === "company" ? (
               <Link

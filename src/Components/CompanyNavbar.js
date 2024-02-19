@@ -4,8 +4,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export default function CompanyNavbar({ isAuthenticated, email, onLogout }) {
+  const navigate = useNavigate();
+
   const StyleText = {
     fontSize: "20px",
   };
@@ -18,7 +21,7 @@ export default function CompanyNavbar({ isAuthenticated, email, onLogout }) {
   const handleLogout = () => {
     if (typeof onLogout === "function") {
       onLogout();
-      window.location.reload();
+      navigate("/"); // Navigate to the home page ("/") after logout
     }
   };
 
