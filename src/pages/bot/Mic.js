@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AudioReactRecorder, { RecordState } from "audio-react-recorder";
+import axios from "axios";
 
 class Mic extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class Mic extends Component {
       window.URL.revokeObjectURL(url);
     }
   };
+
   sendRecordingToBackend = () => {
     const { audioData } = this.state;
     if (audioData) {
@@ -50,18 +52,12 @@ class Mic extends Component {
       const formData = new FormData();
       formData.append("audioFile", audioData.blob, "recording.wav");
 
-      // Make a fetch request to your backend endpoint
-      fetch("/api/mic", {
-        method: "POST",
-        body: formData,
-      })
+      // Use Axios to make the POST request
+      axios
+        .post("/api/mic", formData)
         .then((response) => {
-          if (response.ok) {
-            console.log("Recording sent to the backend successfully.");
-            // You can handle further actions upon successful response
-          } else {
-            console.error("Failed to send recording to the backend.");
-          }
+          console.log("Recording sent to the backend successfully.");
+          console.log(response);
         })
         .catch((error) => {
           console.error("Error while sending recording to the backend:", error);
@@ -81,6 +77,7 @@ class Mic extends Component {
         <button onClick={this.start}>Start</button>
         <button onClick={this.stop}>Stop</button>
         <button onClick={this.sendRecordingToBackend}>Send Recording</button>
+        {/* Add your output here */}
       </div>
     );
   }

@@ -47,6 +47,9 @@ export default function AppNavbar({ isAuthenticated, email, onLogout }) {
           <Nav.Link href="/bot" style={StyleText}>
             <b>My Bot</b>
           </Nav.Link>
+          <Nav.Link href="/file" style={StyleText}>
+            <b>Resume Search</b>
+          </Nav.Link>
           <Nav.Link
             href="https://mediafiles.botpress.cloud/a13cd395-f45e-4c22-9df5-3424fe0d11ab/webchat/bot.html"
             style={StyleText}
