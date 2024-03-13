@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Hirez/static/css/main.0ba6a996.css",
-    "main.js": "/Hirez/static/js/main.e088043c.js",
+    "main.js": "/Hirez/static/js/main.aa91b107.js",
     "static/media/wipro.png": "/Hirez/static/media/wipro.853fdae7103b40ff1f7c.png",
     "static/media/firstcry.png": "/Hirez/static/media/firstcry.310588e74015cb32c7ee.png",
     "static/media/allianz.png": "/Hirez/static/media/allianz.e57d496fdd9ed7fd0985.png",
@@ -14,10 +14,10 @@
     "static/media/logo.svg": "/Hirez/static/media/logo.4a045273ad7896d414cf53f679d4c499.svg",
     "index.html": "/Hirez/index.html",
     "main.0ba6a996.css.map": "/Hirez/static/css/main.0ba6a996.css.map",
-    "main.e088043c.js.map": "/Hirez/static/js/main.e088043c.js.map"
+    "main.aa91b107.js.map": "/Hirez/static/js/main.aa91b107.js.map"
   },
   "entrypoints": [
     "static/css/main.0ba6a996.css",
-    "static/js/main.e088043c.js"
+    "static/js/main.aa91b107.js"
   ]
 }
