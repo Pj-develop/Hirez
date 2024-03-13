@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ab7668d.css",
+    "main.js": "/static/js/main.78eaafba.js",
+    "static/media/wipro.png": "/static/media/wipro.853fdae7103b40ff1f7c.png",
+    "static/media/firstcry.png": "/static/media/firstcry.310588e74015cb32c7ee.png",
+    "static/media/allianz.png": "/static/media/allianz.e57d496fdd9ed7fd0985.png",
+    "static/media/paytm.png": "/static/media/paytm.e63896e54d1a59931fc6.png",
+    "static/media/google1.png": "/static/media/google1.b98825298559faf52978.png",
+    "static/media/B2.png": "/static/media/B2.41f824c04d8092e70a9b.png",
+    "static/media/microsoft.png": "/static/media/microsoft.d339022adbd06c59e981.png",
+    "static/media/infosys.png": "/static/media/infosys.4395b76ff83f04e214f6.png",
+    "static/media/netflix.png": "/static/media/netflix.2ea6959de5a86bd775a9.png",
+    "static/media/logo.svg": "/static/media/logo.4a045273ad7896d414cf53f679d4c499.svg",
+    "index.html": "/index.html",
+    "main.9ab7668d.css.map": "/static/css/main.9ab7668d.css.map",
+    "main.78eaafba.js.map": "/static/js/main.78eaafba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ab7668d.css",
+    "static/js/main.78eaafba.js"
+  ]
+}
