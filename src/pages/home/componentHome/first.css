@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'popins', sans-serif;
+    /* background-color: white; */
+}
+.Hero{
+  margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    background-color: white;
+    
+}
+.left{
+    padding-top: 6rem;
+    padding-left: 7rem;
+    text-align: left;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #009688;
+}
+.search{
+    border-radius: 50px;
+    height: 4.5rem;
+    outline: none;
+    border: 0;
+}
+form {
+    /* This bit sets up the horizontal layout */
+    display:flex;
+    flex-direction:row;
+    /* margin-top: 6rem; */
+    
+    /* This bit draws the box around it */
+    /* border:1px solid grey; */
+    /* border-radius: 50px; */
+    /* I've used padding so you can see the edges of the elements. */
+    /* padding:1px; */
+  }
+  
+  input {
+    /* Tell the input to use all the available space */
+    flex-grow:2;
+    /* And hide the input's outline, so the form looks like the outline */
+    border:none;
+  }
+  
+  /* remove the input focus blue box, it will be in the wrong place. */
+  input:focus {
+    outline: none;
+  }
+  
+  /* Add the focus effect to the form so it contains the button */
+  form:focus-within { 
+    outline: 1px solid #009688 
+  }
+  
+  /* button {
+    /* Just a little styling to make it pretty */
+    /* border:1px solid #009688;
+    background:#009688;
+    color:white;
+    border-radius: 50px;
+    margin-right: 1rem;
+    width:  6rem;
+    height: 3.5rem;
+    margin-top: .5rem;
+    margin-right: .5rem; */
+  /* } */ 
+  .find-jobs-button {
+    background-color: #009688; /* Default color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.find-jobs-button:hover {
+    background-color: #FF5722; /* New color on hover */
+}
+
