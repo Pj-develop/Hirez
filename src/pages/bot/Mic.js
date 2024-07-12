@@ -1,86 +1,57 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import AudioReactRecorder, { RecordState } from "audio-react-recorder";
 import axios from "axios";
 
-class Mic extends Component {
-  constructor(props) {
-    super(props);
+function Mic() {
+  const [recordState, setRecordState] = useState(null);
+  const [audioData, setAudioData] = useState(null);
+  const [response, setResponse] = useState(null);
 
-    this.state = {
-      recordState: null,
-      audioData: null,
-    };
-  }
-
-  start = () => {
-    this.setState({
-      recordState: RecordState.START,
-    });
+  const start = () => {
+    setRecordState(RecordState.START);
   };
 
-  stop = () => {
-    this.setState({
-      recordState: RecordState.STOP,
-    });
+  const stop = () => {
+    setRecordState(RecordState.STOP);
   };
 
-  // Handle onStop callback to receive audio data
-  onStop = (audioData) => {
+  const onStop = (audioData) => {
     console.log("audioData", audioData);
-    this.setState({ audioData });
+    setAudioData(audioData);
   };
 
-  // Function to save the recorded audio as a .wav file
-  sendRecording = () => {
-    const { audioData } = this.state;
+  const sendRecordingToBackend = () => {
     if (audioData) {
-      const url = window.URL.createObjectURL(audioData.blob);
-      const a = document.createElement("a");
-      document.body.appendChild(a);
-      a.style = "display: none";
-      a.href = url;
-      a.download = "recording.wav";
-      a.click();
-      window.URL.revokeObjectURL(url);
-    }
-  };
-
-  sendRecordingToBackend = () => {
-    const { audioData } = this.state;
-    if (audioData) {
-      // Create FormData object to send the file
       const formData = new FormData();
       formData.append("audioFile", audioData.blob, "recording.wav");
 
-      // Use Axios to make the POST request
       axios
         .post("/api/mic", formData)
         .then((response) => {
           console.log("Recording sent to the backend successfully.");
-          console.log(response);
+          setResponse(response); // Access data directly, no need for .json()
         })
         .catch((error) => {
           console.error("Error while sending recording to the backend:", error);
         });
-    } else {
-      console.error("No audio data to send.");
     }
   };
 
-  render() {
-    const { recordState } = this.state;
+  return (
+    <div>
+      <AudioReactRecorder state={recordState} onStop={onStop} />
 
-    return (
-      <div>
-        <AudioReactRecorder state={recordState} onStop={this.onStop} />
-
-        <button onClick={this.start}>Start</button>
-        <button onClick={this.stop}>Stop</button>
-        <button onClick={this.sendRecordingToBackend}>Send Recording</button>
-        {/* Add your output here */}
-      </div>
-    );
-  }
+      <button onClick={start}>Start</button>
+      <button onClick={stop}>Stop</button>
+      <button onClick={sendRecordingToBackend}>Send Recording</button>
+      {response && (
+        <div>
+          {response.data && <p>Data: {response.data}</p>}
+          <p>Status: {response.status}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Mic;
