@@ -1,0 +1,27 @@
+Add a linear gradient background to the body
+  
+  /* Add some box shadow and border radius to the form container */
+  div {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* border-radius: 10px; */
+  }
+  
+  /* Add some hover effects to the button */
+  button:hover {
+    /* background: #0069d9; */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add some transition effects to the inputs */
+  input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Add some focus effects to the inputs */
+  input:focus {
+    /* border-color: #007bff; */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+      0 0 8px rgba(0, 123, 255, 0.6);
+    outline: none;
+  }
+  

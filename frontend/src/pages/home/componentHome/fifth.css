@@ -1,0 +1,108 @@
+.box1 {
+  position: flex;
+  background: #ffffff;
+  margin: 0rem 0 5rem 0;
+  padding: 3rem 2rem 3rem 2rem;
+}
+
+.box2-btn {
+  padding: 2rem 2rem;
+  position: box;
+}
+.cBox {
+  padding: 2rem 0rem 2rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.textPromo {
+  /* The Biggest revolution Is Yet to Come!! */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 96px;
+  text-align: center;
+  color: #000000;
+}
+.sp1 {
+  /* The Biggest revolution Is Yet to Come!! */
+
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 96px;
+  text-align: center;
+  color: #009688;
+}
+.sp2 {
+  /* The Biggest revolution Is Yet to Come!! */
+
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 96px;
+  text-align: center;
+  color: #ffc107;
+}
+/* Button */
+
+.btn-login {
+  height: auto;
+  width: auto;
+  padding: 1rem;
+  background: #03a9f4;
+  border-radius: 80px;
+  font-family: "Poppins";
+  font-weight: bolder;
+  font-size: larger;
+  border: none;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0px 0px 10px 0px #03a9f4;
+}
+
+.btn-1 {
+  height: auto;
+  width: auto;
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  background: #009688;
+  border-radius: 80px;
+  font-family: "Poppins";
+  font-weight: bolder;
+  font-size: larger;
+  border: none;
+  box-shadow: 0px 0px 10px 0px #009688;
+}
+
+.btn-2 {
+  height: auto;
+  width: auto;
+  padding: 1rem;
+  background: #ffc107;
+  border-radius: 80px;
+  font-family: "Poppins";
+  font-weight: bolder;
+  font-size: larger;
+  border: none;
+  box-shadow: 0px 0px 10px 0px #ffc107;
+}
+
+/* ManWithText.css */
+.man-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.man-image {
+  width: 250px; /* Adjust the width of the man image */
+  height: 400px; /* Adjust the height of the man image */
+  background: url("B2.png") center/cover; /* Replace 'man.jpg' with your image URL */
+  padding: 0% 15% 0% 15%;
+}
